@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission Quest</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+  <style>
+    body, p, .level, .intro, #missions, .popup, .popup-content, button, span, h2, #popupDesc {
+      font-family: 'Bruno Ace SC', cursive;
+    }
+    .title {
+      font-family: 'Permanent Marker', cursive;
+    }
+    .intro, .level {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Mission Quest</h1>
+    <p class="intro">Greetings, brave adventurer.</p>
+    <p class="intro">You are about to embark on a series of secret missions, designed to test your skills and determination.</p>
+    <p class="intro">Each challenge completed will unlock hidden rewards and increase your level in this enigmatic journey into the unknown. Are you ready to accept the challenge?</p>
+    <p class="level">Current Level: <span id="level">0</span></p>
+    <div id="missions"></div>
+  </div>
+
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <span id="closePopup" class="close">&times;</span>
+      <h2 id="popupTitle"></h2>
+      <p id="popupDesc"></p>
+      <button id="completeBtn">Mission Complete!</button>
+      <button id="reactivateBtn" style="display:none;">Reactivate Mission</button>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

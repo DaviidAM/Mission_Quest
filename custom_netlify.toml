@@ -1,0 +1,11 @@
+[build]
+  publish = "."
+  command = ""
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/missions/*"
+  to = "/missions/:splat"
+  status = 200
