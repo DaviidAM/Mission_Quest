@@ -10,7 +10,7 @@
 
 💻 **Customizable**: Configure your own missions to suit your preferences and the preferences of your group.
 
-💾 **Local progress tracking**: Your progress is automatically saved in your browser's local storage, allowing multiple players to maintain independent progress on the same device simultaneously.
+💾 **Local progress tracking**: Your progress is automatically saved in your browser's cache, allowing multiple players to maintain independent progress if they are using different browsers.
 
 🧠 **AI-generated applications**: This web application was built as a proof of concept, testing the capabilities of AI-generated applications. It was generated in less than 30 min.
 
@@ -56,15 +56,16 @@ If you have interest to use this project, you can customize it to suit your need
 1. Create a fork repo from this project.
 2. Modify the `app/index.html` file (lines 24-31) to suit your needs. You can configure a different website tittle, text to show, etc.
    ```html
-   <div class="container">
-    <h1 class="title">Your custom tittle</h1>
-    <p class="intro">Your custom text</p>
-    <p class="intro">Your custom text</p>
-    <p class="intro">Your custom text</p>
-    <p class="level">Current Level: <span id="level">0</span></p>
-    <div id="missions"></div>
-  </div>
+      <div class="container">
+      <h1 class="title">Your custom tittle</h1>
+      <p class="intro">Your custom text</p>
+      <p class="intro">Your custom text</p>
+      <p class="intro">Your custom text</p>
+      <p class="level">Current Level: <span id="level">0</span></p>
+      <div id="missions"></div>
+   </div>
    ```
+
 3. Add and modify your custom missions to the `app/missions/list` folder.
    - Create as much json files as you want. But be sure all of them follow the same structure:
       ```json

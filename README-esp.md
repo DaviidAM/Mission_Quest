@@ -56,14 +56,14 @@ Si estás interesado en usar este proyecto, puedes personalizarlo según tus nec
 1. Crea un fork de este proyecto.
 2. Modifica el archivo `app/index.html` (líneas 24-31) según tus necesidades. Puedes configurar un título diferente, texto a mostrar, etc.
    ```html
-   <div class="container">
-    <h1 class="title">Tu título personalizado</h1>
-    <p class="intro">Tu texto personalizado</p>
-    <p class="intro">Tu texto personalizado</p>
-    <p class="intro">Tu texto personalizado</p>
-    <p class="level">Nivel actual: <span id="level">0</span></p>
-    <div id="missions"></div>
-  </div>
+    <div class="container">
+        <h1 class="title">Tu título personalizado</h1>
+        <p class="intro">Tu texto personalizado</p>
+        <p class="intro">Tu texto personalizado</p>
+        <p class="intro">Tu texto personalizado</p>
+        <p class="level">Nivel actual: <span id="level">0</span></p>
+        <div id="missions"></div>
+    </div>
    ```
 3. Agrega y modifica tus misiones personalizadas en la carpeta `app/missions/list`.
    - Crea tantos archivos JSON como desees. Pero asegúrate de que todos sigan la misma estructura:
