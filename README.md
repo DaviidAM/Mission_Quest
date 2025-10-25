@@ -4,6 +4,8 @@
 
 🎮 **Demo website**: [Demo Mission Quest](https://daviidam.github.io/Mission_Quest)
 
+🇪🇸 **Documentación en Español**: [Readme en Español](README-esp.md)
+
 ## ✨ Key Features
 
 🎯 **Join the adventure**: Manage and track your missions with ease. Whether you're planning a party or an event, Mission Quest has you covered.
