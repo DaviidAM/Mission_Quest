@@ -117,8 +117,10 @@ To enable GitHub Pages, follow these steps:
 1. Go to your forked repo on GitHub.
 2. Click on the **Settings** tab.
 3. Scroll down to the **Pages** section.
-4. Under **Source**, select **Deploy from branch**, choose **main** branch and **/(root)** folder.
+4. Under **Source**, select **Deploy from branch**, choose **gh-pages** branch and **/(root)** folder.
 5. Click on the **Save** button.
+
+> Note: The **gh-pages** branch will be generated automatically in the pipeline from **main** branch.
 
 ### See your deployed website
 

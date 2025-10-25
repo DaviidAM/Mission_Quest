@@ -114,8 +114,10 @@ Para habilitar GitHub Pages, sigue estos pasos:
 1. Ve a tu repositorio fork en GitHub.
 2. Haz clic en la pestaña **Settings** (Configuración).
 3. Desplázate hacia abajo hasta la sección **Pages**.
-4. En **Source** (Origen), selecciona **Deploy from branch** (Desplegar desde rama), elige la rama **main** y la carpeta **/(root)**.
+4. En **Source** (Origen), selecciona **Deploy from branch** (Desplegar desde rama), elige la rama **gh-pages** y la carpeta **/(root)**.
 5. Haz clic en el botón **Save** (Guardar).
+
+> Nota: La rama **gh-pages** se generará automáticamente en la canalización desde la rama **main**.
 
 ### Ver tu sitio web desplegado
 
