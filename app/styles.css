@@ -1,43 +1,43 @@
 body {
-  background: #fff;
+  background: linear-gradient(135deg, #0A0A0F 0%, #11132A 100%);
   font-family: 'Pixelify Sans', Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
-  color: #1a1a1a;
+  color: #E5E7EB;
 }
 
 h1, h2, .intro, .level, button, .mission {
   font-family: 'Pixelify Sans', Arial, Helvetica, sans-serif;
   letter-spacing: 0.03em;
-  text-shadow: 1px 2px 0 #fff, 0 0 2px #eee;
+  text-shadow: 1px 2px 0 rgba(0,0,0,0.4), 0 0 2px rgba(99,102,241,0.3);
 }
 
 .intro, .level {
   font-size: 1.15rem;
-  color: #222;
-  text-shadow: 1px 2px 0 #fff, 0 0 2px #eee;
+  color: #E5E7EB;
+  text-shadow: 1px 2px 0 rgba(0,0,0,0.4), 0 0 2px rgba(99,102,241,0.3);
 }
 
 .mission, button {
   font-size: 1.2rem;
-  text-shadow: 1px 2px 0 #fff, 0 0 2px #eee;
+  text-shadow: 1px 2px 0 rgba(0,0,0,0.4), 0 0 2px rgba(99,102,241,0.3);
 }
-
 
 .container {
   max-width: 370px;
   margin: 20px auto;
   padding: 30px 20px 40px 20px;
-  border: 3px solid #222;
+  border: 3px solid #312E5B;
   border-radius: 24px;
-  background: #fff;
-  box-shadow: 0 4px 20px 0 rgba(0,0,0,0.06);
+  background: #16161F;
+  box-shadow: 0 4px 20px 0 rgba(0,0,0,0.4);
 }
 
 h1 {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 16px;
+  color: #E5E7EB;
 }
 
 .intro {
@@ -64,20 +64,24 @@ h1 {
   border-radius: 16px;
   font-size: 1.3rem;
   font-family: inherit;
-  border: 2.5px solid #4a90e2;
-  background: #b8e0ff;
-  color: #1570a6;
+  border: 2.5px solid #6366F1;
+  background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%);
+  color: #E5E7EB;
   text-align: center;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, transform 0.14s;
-  box-shadow: 0 2px 7px 0 rgba(74,144,226,0.1);
+  transition: background 0.2s, color 0.2s, transform 0.14s, box-shadow 0.2s;
+  box-shadow: 0 2px 7px 0 rgba(99,102,241,0.3);
   outline: none;
   position: relative;
 }
+.mission:hover {
+  box-shadow: 0 4px 14px 0 rgba(99,102,241,0.5);
+}
 .mission.completed {
-  background: #b0f7c8;
-  color: #1b6e3c;
-  border-color: #3ec97b;
+  background: linear-gradient(135deg, #0E7490 0%, #22D3EE 100%);
+  color: #E5E7EB;
+  border-color: #22D3EE;
+  box-shadow: 0 2px 7px 0 rgba(34,211,238,0.3);
 }
 .mission:active {
   transform: scale(0.97);
@@ -86,7 +90,7 @@ h1 {
 .popup {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.30);
+  background: rgba(0,0,0,0.70);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,14 +100,15 @@ h1 {
   display: none;
 }
 .popup-content {
-  background: #fff;
+  background: #1E1E2B;
   border-radius: 20px;
   padding: 38px 30px 30px 30px;
   min-width: 290px;
   max-width: 96vw;
-  box-shadow: 0 6px 32px 0 rgba(0,0,0,0.14);
+  box-shadow: 0 6px 32px 0 rgba(0,0,0,0.5);
   text-align: center;
   position: relative;
+  border: 2px solid #312E5B;
 }
 .close {
   position: absolute;
@@ -111,11 +116,11 @@ h1 {
   right: 16px;
   font-size: 2.1rem;
   cursor: pointer;
-  color: #888;
+  color: #9CA3AF;
   transition: color 0.15s;
 }
 .close:hover {
-  color: #222;
+  color: #E5E7EB;
 }
 #completeBtn {
   margin-top: 18px;
@@ -123,17 +128,18 @@ h1 {
   font-size: 1.25rem;
   border-radius: 12px;
   border: none;
-  background: #4a90e2;
-  color: #fff;
+  background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%);
+  color: #E5E7EB;
   font-family: 'Bruno Ace SC', sans-serif;
   letter-spacing: normal;
   text-transform: none;
   text-shadow: none;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
 }
 #completeBtn:hover {
-  background: #1570a6;
+  background: linear-gradient(135deg, #818CF8 0%, #6366F1 100%);
+  box-shadow: 0 4px 14px rgba(99,102,241,0.5);
 }
 
 #reactivateBtn {
@@ -142,16 +148,16 @@ h1 {
   font-size: 1.25rem;
   border-radius: 12px;
   border: none;
-  background: #e24a4a;
-  color: #fff;
+  background: linear-gradient(135deg, #0E7490 0%, #22D3EE 100%);
+  color: #E5E7EB;
   font-family: 'Bruno Ace SC', sans-serif;
   letter-spacing: normal;
   text-transform: none;
   text-shadow: none;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
 }
 #reactivateBtn:hover {
-  background: #a61515;
+  background: linear-gradient(135deg, #22D3EE 0%, #0E7490 100%);
+  box-shadow: 0 4px 14px rgba(34,211,238,0.4);
 }
-
