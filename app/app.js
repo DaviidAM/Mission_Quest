@@ -168,6 +168,7 @@ const configModal = document.getElementById("configModal");
 const configBtn = document.getElementById("configBtn");
 const configClose = document.getElementById("configClose");
 const configIntro = document.getElementById("configIntro");
+configIntro.oninput = function() { setIntro(configIntro.value.split("\n")); };
 const configTitle = document.getElementById("configTitle");
 const configDesc = document.getElementById("configDesc");
 const addMissionBtn = document.getElementById("addMissionBtn");
@@ -178,9 +179,9 @@ const demoBtn = document.getElementById("demoBtn");
 let editingIndex = null;
 
 const demoMissions = [
-  { title: "Ir al gym", desc: "Hacer cardio 30min" },
-  { title: "Sacar al perro", desc: "Pasear 30 min" },
-  { title: "Leer", desc: "Leer 20 páginas" }
+  { title: "Go to the gym", desc: "Do 30 minutes of cardio" },
+  { title: "Walk the dog", desc: "Take a 30-minute walk" },
+  { title: "Read", desc: "Read 20 pages" }
 ];
 
 function encodeMissions(missions, intro) {
@@ -230,6 +231,7 @@ function renderConfigMissions() {
     deleteBtn.onclick = () => {
       configMissions.splice(idx, 1);
       renderConfigMissions();
+  syncMissions();
       syncMissions();
     };
 
@@ -291,6 +293,7 @@ addMissionBtn.onclick = function() {
   configDesc.value = "";
   renderConfigMissions();
   syncMissions();
+  syncMissions();
 };
 
 exportBtn.onclick = function() {
@@ -317,6 +320,7 @@ demoBtn.onclick = function() {
   configMissions.length = 0;
   configMissions.push(...demoMissions.map(m => ({ title: m.title, desc: m.desc })));
   renderConfigMissions();
+  syncMissions();
 };
 
 document.addEventListener("keydown", function(e) {
