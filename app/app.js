@@ -187,20 +187,11 @@ const demoMissions = [
 function encodeMissions(missions, intro) {
   // JSON: {intro: [...lines], missions: [{title,desc},...]}
   const payload = JSON.stringify({ intro: intro.split("\n"), missions });
-  const compressed = pako.deflate(payload);
-  return btoa(String.fromCharCode.apply(null, compressed))
-    .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  return LZString.compressToEncodedURIComponent(payload);
 }
 
 function decodeMissions(encoded) {
-  // base64url → base64
-  const base64 = encoded.replace(/-/g, '+').replace(/_/g, '/');
-  const binary = atob(base64);
-  const bytes = new Uint8Array(binary.length);
-  for (let i = 0; i < binary.length; i++) {
-    bytes[i] = binary.charCodeAt(i);
-  }
-  const decompressed = pako.inflate(bytes, { to: 'string' });
+  const decompressed = LZString.decompressFromEncodedURIComponent(encoded);
   const obj = JSON.parse(decompressed);
   return { intro: obj.intro || [], missions: obj.missions || [] };
 }
@@ -320,11 +311,8 @@ demoBtn.onclick = function() {
   configMissions.length = 0;
   configMissions.push(...demoMissions.map(m => ({ title: m.title, desc: m.desc })));
   renderConfigMissions();
-  configIntro.value = "Greetings, brave adventurer.
-You are about to embark on a series of secret missions, designed to test your skills and determination.
-Each challenge completed will unlock hidden rewards and increase your level in this enigmatic journey into the unknown. Are you ready to accept the challenge?";
-  setIntro(configIntro.value.split("
-"));
+  configIntro.value = "Greetings, brave adventurer.\nYou are about to embark on a series of secret missions, designed to test your skills and determination.\nEach challenge completed will unlock hidden rewards and increase your level in this enigmatic journey into the unknown. Are you ready to accept the challenge?";
+  setIntro(configIntro.value.split("\n"));
   syncMissions();
 };
 
