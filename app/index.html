@@ -23,9 +23,11 @@
 <body>
   <div class="container">
     <h1 class="title">Mission Quest</h1>
-    <p class="intro">Greetings, brave adventurer.</p>
-    <p class="intro">You are about to embark on a series of secret missions, designed to test your skills and determination.</p>
-    <p class="intro">Each challenge completed will unlock hidden rewards and increase your level in this enigmatic journey into the unknown. Are you ready to accept the challenge?</p>
+    <div id="introContainer">
+      <p class="intro">Greetings, brave adventurer.</p>
+      <p class="intro">You are about to embark on a series of secret missions, designed to test your skills and determination.</p>
+      <p class="intro">Each challenge completed will unlock hidden rewards and increase your level in this enigmatic journey into the unknown. Are you ready to accept the challenge?</p>
+    </div>
     <p class="level">Current Level: <span id="level">0</span></p>
     <button id="configBtn">⚙ Configurar misiones</button>
     <div id="missions"></div>
@@ -35,6 +37,7 @@
     <div class="popup-content config-content">
       <span id="configClose" class="close">&times;</span>
       <h2>Configurar Misiones</h2>
+      <textarea id="configIntro" placeholder="Descripción principal (intro)" rows="2"></textarea>
       <input id="configTitle" type="text" placeholder="Título de la misión">
       <textarea id="configDesc" placeholder="Descripción"></textarea>
       <button id="addMissionBtn">Añadir misión</button>

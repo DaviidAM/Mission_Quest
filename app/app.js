@@ -1,14 +1,32 @@
 const missions = [];
 
+let mainDescription = "";
+
+function setIntro(lines) {
+  const container = document.getElementById("introContainer");
+  if (!container) return;
+  container.innerHTML = "";
+  lines.forEach(line => {
+    const p = document.createElement("p");
+    p.className = "intro";
+    p.textContent = line;
+    container.appendChild(p);
+  });
+}
+
 async function loadMissions() {
   // Check for ?data= parameter first
   const params = new URLSearchParams(window.location.search);
-  const encoded = params.get('data');
+  const encoded = params.get("data");
   if (encoded) {
     try {
-      const decoded = decodeMissions(encoded);
+      const { intro, missions: decodedMissions } = decodeMissions(encoded);
       missions.length = 0;
-      missions.push(...decoded);
+      missions.push(...decodedMissions);
+      if (intro && intro.length > 0) {
+        mainDescription = intro.join("\n");
+        setIntro(intro);
+      }
       level = 0;
       levelSpan.textContent = level;
       renderMissions();
@@ -83,6 +101,16 @@ function renderMissions() {
     btn.className = "mission" + (mission.completed ? " completed" : "");
     btn.textContent = mission.title;
     btn.onclick = () => openPopup(idx);
+
+    const gear = document.createElement("span");
+    gear.className = "mission-gear";
+    gear.textContent = "\u2699";
+    gear.onclick = (e) => {
+      e.stopPropagation();
+      openConfigModalForEdit(idx);
+    };
+
+    btn.appendChild(gear);
     // Ya no deshabilitamos el botón para permitir abrir misiones completas
     missionsDiv.appendChild(btn);
   });
@@ -148,6 +176,7 @@ const configMissions = [];
 const configModal = document.getElementById("configModal");
 const configBtn = document.getElementById("configBtn");
 const configClose = document.getElementById("configClose");
+const configIntro = document.getElementById("configIntro");
 const configTitle = document.getElementById("configTitle");
 const configDesc = document.getElementById("configDesc");
 const addMissionBtn = document.getElementById("addMissionBtn");
@@ -163,11 +192,10 @@ const demoMissions = [
   { title: "Leer", desc: "Leer 20 páginas" }
 ];
 
-function encodeMissions(missions) {
-  // CSV: title,desc per line
-  const csv = missions.map(m => m.title + "," + m.desc).join("\n");
-  const compressed = pako.deflate(csv);
-  // base64url
+function encodeMissions(missions, intro) {
+  // JSON: {intro: [...lines], missions: [{title,desc},...]}
+  const payload = JSON.stringify({ intro: intro.split("\n"), missions });
+  const compressed = pako.deflate(payload);
   return btoa(String.fromCharCode.apply(null, compressed))
     .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
@@ -181,10 +209,8 @@ function decodeMissions(encoded) {
     bytes[i] = binary.charCodeAt(i);
   }
   const decompressed = pako.inflate(bytes, { to: 'string' });
-  return decompressed.split("\n").map(line => {
-    const idx = line.indexOf(",");
-    return { title: line.slice(0, idx), desc: line.slice(idx + 1) };
-  });
+  const obj = JSON.parse(decompressed);
+  return { intro: obj.intro || [], missions: obj.missions || [] };
 }
 
 function renderConfigMissions() {
@@ -223,10 +249,21 @@ function renderConfigMissions() {
 }
 
 function openConfigModal() {
+  configIntro.value = mainDescription;
   configModal.classList.remove("hidden");
 }
 
+function openConfigModalForEdit(idx) {
+  const m = missions[idx];
+  configTitle.value = m.title;
+  configDesc.value = m.desc;
+  editingIndex = idx;
+  addMissionBtn.textContent = "Guardar cambios";
+  openConfigModal();
+}
+
 function closeConfigModal() {
+  mainDescription = configIntro.value;
   configModal.classList.add("hidden");
   configTitle.value = "";
   configDesc.value = "";
@@ -257,7 +294,7 @@ addMissionBtn.onclick = function() {
 };
 
 exportBtn.onclick = function() {
-  const encoded = encodeMissions(configMissions);
+  const encoded = encodeMissions(configMissions, configIntro.value);
   const url = new URL(window.location.href);
   url.search = "?data=" + encoded;
   window.location.href = url.toString();

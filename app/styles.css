@@ -74,6 +74,20 @@ h1 {
   outline: none;
   position: relative;
 }
+.mission-gear {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: 0.75;
+  line-height: 1;
+  transition: opacity 0.15s;
+  pointer-events: auto;
+}
+.mission-gear:hover {
+  opacity: 1;
+}
 .mission:hover {
   box-shadow: 0 4px 14px 0 rgba(99,102,241,0.5);
 }
