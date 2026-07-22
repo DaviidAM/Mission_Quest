@@ -27,7 +27,21 @@
     <p class="intro">You are about to embark on a series of secret missions, designed to test your skills and determination.</p>
     <p class="intro">Each challenge completed will unlock hidden rewards and increase your level in this enigmatic journey into the unknown. Are you ready to accept the challenge?</p>
     <p class="level">Current Level: <span id="level">0</span></p>
+    <button id="configBtn">⚙ Configurar misiones</button>
     <div id="missions"></div>
+  </div>
+
+  <div id="configModal" class="popup hidden">
+    <div class="popup-content config-content">
+      <span id="configClose" class="close">&times;</span>
+      <h2>Configurar Misiones</h2>
+      <input id="configTitle" type="text" placeholder="Título de la misión">
+      <textarea id="configDesc" placeholder="Descripción"></textarea>
+      <button id="addMissionBtn">Añadir misión</button>
+      <div id="configMissionList"></div>
+      <button id="exportBtn">Exportar a URL</button>
+      <button id="demoBtn">Demo</button>
+    </div>
   </div>
 
   <div id="popup" class="popup hidden">
@@ -39,6 +53,7 @@
       <button id="reactivateBtn" style="display:none;">Reactivate Mission</button>
     </div>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

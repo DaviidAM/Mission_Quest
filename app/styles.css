@@ -157,6 +157,169 @@ h1 {
   cursor: pointer;
   transition: background 0.2s, box-shadow 0.2s;
 }
+#configBtn {
+  display: block;
+  margin: 0 auto 18px auto;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 2px solid #312E5B;
+  background: #1E1E2B;
+  color: #E5E7EB;
+  font-family: 'Bruno Ace SC', sans-serif;
+  letter-spacing: normal;
+  text-transform: none;
+  text-shadow: none;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+#configBtn:hover {
+  background: #2a2a3d;
+  box-shadow: 0 4px 14px rgba(99,102,241,0.3);
+}
+
+#configModal .popup-content {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.config-content {
+  min-width: 300px;
+}
+
+.config-content h2 {
+  font-family: 'Pixelify Sans', Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  text-align: center;
+  color: #E5E7EB;
+  text-shadow: 1px 2px 0 rgba(0,0,0,0.4), 0 0 2px rgba(99,102,241,0.3);
+}
+
+.config-content input,
+.config-content textarea {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #312E5B;
+  background: #16161F;
+  color: #E5E7EB;
+  font-family: 'Bruno Ace SC', sans-serif;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.config-content input::placeholder,
+.config-content textarea::placeholder {
+  color: #6B7280;
+}
+
+#configMissionList {
+  margin: 14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.config-mission-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1.5px solid #312E5B;
+  background: #16161F;
+  font-family: 'Bruno Ace SC', sans-serif;
+  color: #E5E7EB;
+  font-size: 0.95rem;
+}
+
+.config-mission-item .item-title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.config-mission-item button {
+  margin-left: 8px;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Bruno Ace SC', sans-serif;
+  transition: background 0.2s;
+}
+
+.config-mission-item .edit-btn {
+  background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%);
+  color: #E5E7EB;
+}
+
+.config-mission-item .delete-btn {
+  background: linear-gradient(135deg, #9F1239 0%, #E11D48 100%);
+  color: #E5E7EB;
+}
+
+#exportBtn {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  font-size: 1.05rem;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+  color: #E5E7EB;
+  font-family: 'Bruno Ace SC', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+#exportBtn:hover {
+  box-shadow: 0 4px 14px rgba(16,185,129,0.4);
+}
+
+#demoBtn {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  font-size: 1.05rem;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #D97706 0%, #F59E0B 100%);
+  color: #E5E7EB;
+  font-family: 'Bruno Ace SC', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+#demoBtn:hover {
+  box-shadow: 0 4px 14px rgba(245,158,11,0.4);
+}
+
+#addMissionBtn {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 10px;
+  font-size: 1.05rem;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%);
+  color: #E5E7EB;
+  font-family: 'Bruno Ace SC', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+#addMissionBtn:hover {
+  box-shadow: 0 4px 14px rgba(99,102,241,0.5);
+}
+
 #reactivateBtn:hover {
   background: linear-gradient(135deg, #22D3EE 0%, #0E7490 100%);
   box-shadow: 0 4px 14px rgba(34,211,238,0.4);
