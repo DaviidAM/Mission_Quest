@@ -320,6 +320,11 @@ demoBtn.onclick = function() {
   configMissions.length = 0;
   configMissions.push(...demoMissions.map(m => ({ title: m.title, desc: m.desc })));
   renderConfigMissions();
+  configIntro.value = "Greetings, brave adventurer.
+You are about to embark on a series of secret missions, designed to test your skills and determination.
+Each challenge completed will unlock hidden rewards and increase your level in this enigmatic journey into the unknown. Are you ready to accept the challenge?";
+  setIntro(configIntro.value.split("
+"));
   syncMissions();
 };
 
