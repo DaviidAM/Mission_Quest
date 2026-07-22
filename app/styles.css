@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(135deg, #0A0A0F 0%, #11132A 100%);
+  background: #0A0A0F;
   font-family: 'Pixelify Sans', Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
@@ -357,7 +357,7 @@ h1 {
   border: 2.5px solid #6366F1;
   background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%);
   color: #E5E7EB;
-  font-family: 'Bruno Ace SC', sans-serif;
+  font-family: inherit;
   cursor: pointer;
   transition: background 0.2s, box-shadow 0.2s;
 }
