@@ -286,9 +286,22 @@ addMissionBtn.onclick = function() {
 
 exportBtn.onclick = function() {
   const encoded = encodeMissions(configMissions, configIntro.value);
-  const url = new URL(window.location.href);
-  url.search = "?data=" + encoded;
-  window.location.href = url.toString();
+  const fullUrl = window.location.origin + window.location.pathname + '?data=' + encoded;
+  const exportedUrlEl = document.getElementById('exportedUrl');
+  const urlButtons = document.getElementById('exportUrlButtons');
+  exportedUrlEl.value = fullUrl;
+  exportedUrlEl.style.display = 'block';
+  urlButtons.style.display = 'flex';
+};
+
+document.getElementById('copyUrlBtn').onclick = function() {
+  const url = document.getElementById('exportedUrl').value;
+  navigator.clipboard.writeText(url).then(() => alert('URL copied!'));
+};
+
+document.getElementById('openUrlBtn').onclick = function() {
+  const url = document.getElementById('exportedUrl').value;
+  window.open(url, '_blank');
 };
 
 demoBtn.onclick = function() {
