@@ -1,5 +1,12 @@
 const missions = [];
 
+// Global error handler to catch silent failures (e.g. CDN load errors)
+window.onerror = function(msg, src, line, col, err) {
+  console.error("[Global Error]", msg, "at", src, "line", line, "col", col);
+  if (err && err.stack) console.error(err.stack);
+  return false;
+};
+
 let mainDescription = "";
 
 function setIntro(lines) {
