@@ -230,6 +230,7 @@ function renderConfigMissions() {
     deleteBtn.onclick = () => {
       configMissions.splice(idx, 1);
       renderConfigMissions();
+      syncMissions();
     };
 
     item.appendChild(titleSpan);
@@ -237,6 +238,13 @@ function renderConfigMissions() {
     item.appendChild(deleteBtn);
     configMissionList.appendChild(item);
   });
+}
+
+// Sync configMissions → main missions array and re-render
+function syncMissions() {
+  missions.length = 0;
+  configMissions.forEach(m => missions.push({ title: m.title, desc: m.desc }));
+  renderMissions();
 }
 
 function openConfigModal() {
@@ -282,6 +290,7 @@ addMissionBtn.onclick = function() {
   configTitle.value = "";
   configDesc.value = "";
   renderConfigMissions();
+  syncMissions();
 };
 
 exportBtn.onclick = function() {
