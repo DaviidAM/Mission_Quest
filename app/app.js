@@ -102,15 +102,6 @@ function renderMissions() {
     btn.textContent = mission.title;
     btn.onclick = () => openPopup(idx);
 
-    const gear = document.createElement("span");
-    gear.className = "mission-gear";
-    gear.textContent = "\u2699";
-    gear.onclick = (e) => {
-      e.stopPropagation();
-      openConfigModalForEdit(idx);
-    };
-
-    btn.appendChild(gear);
     // Ya no deshabilitamos el botón para permitir abrir misiones completas
     missionsDiv.appendChild(btn);
   });
@@ -225,17 +216,17 @@ function renderConfigMissions() {
 
     const editBtn = document.createElement("button");
     editBtn.className = "edit-btn";
-    editBtn.textContent = "Editar";
+    editBtn.textContent = "Edit";
     editBtn.onclick = () => {
       configTitle.value = m.title;
       configDesc.value = m.desc;
       editingIndex = idx;
-      addMissionBtn.textContent = "Guardar cambios";
+      addMissionBtn.textContent = "Save changes";
     };
 
     const deleteBtn = document.createElement("button");
     deleteBtn.className = "delete-btn";
-    deleteBtn.textContent = "Eliminar";
+    deleteBtn.textContent = "Delete";
     deleteBtn.onclick = () => {
       configMissions.splice(idx, 1);
       renderConfigMissions();
@@ -258,7 +249,7 @@ function openConfigModalForEdit(idx) {
   configTitle.value = m.title;
   configDesc.value = m.desc;
   editingIndex = idx;
-  addMissionBtn.textContent = "Guardar cambios";
+  addMissionBtn.textContent = "Save changes";
   openConfigModal();
 }
 
@@ -268,7 +259,7 @@ function closeConfigModal() {
   configTitle.value = "";
   configDesc.value = "";
   editingIndex = null;
-  addMissionBtn.textContent = "Añadir misión";
+  addMissionBtn.textContent = "Add mission";
 }
 
 configBtn.onclick = openConfigModal;
@@ -284,7 +275,7 @@ addMissionBtn.onclick = function() {
   if (editingIndex !== null) {
     configMissions[editingIndex] = { title, desc };
     editingIndex = null;
-    addMissionBtn.textContent = "Añadir misión";
+    addMissionBtn.textContent = "Add mission";
   } else {
     configMissions.push({ title, desc });
   }

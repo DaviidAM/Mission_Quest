@@ -338,3 +338,31 @@ h1 {
   background: linear-gradient(135deg, #22D3EE 0%, #0E7490 100%);
   box-shadow: 0 4px 14px rgba(34,211,238,0.4);
 }
+
+.app-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.global-config-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 6px 10px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  border: 2px solid #312E5B;
+  background: #1E1E2B;
+  color: #E5E7EB;
+  font-family: 'Bruno Ace SC', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.global-config-btn:hover {
+  background: #2a2a3d;
+  box-shadow: 0 4px 14px rgba(99,102,241,0.3);
+}
