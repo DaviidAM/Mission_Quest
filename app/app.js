@@ -1,9 +1,5 @@
 const missions = [];
 
-// Demo mode: check URL params
-const urlParams = new URLSearchParams(window.location.search);
-const isDemoMode = urlParams.get('demo') === 'true';
-
 async function loadMissions() {
   // 1. Load mission files
   let files = [];
@@ -23,39 +19,37 @@ async function loadMissions() {
     missionsDiv.innerHTML = '<p style="color:red">Failed to load mission details.</p>';
     return;
   }
-  // 2. Read progress from localStorage (only when NOT in demo mode)
+  // 2. Read progress from localStorage
   let completed = [];
   let remoteLevel = 0;
-  if (!isDemoMode) {
-    completed = JSON.parse(localStorage.getItem('missions_completed') || '[]');
-    remoteLevel = parseInt(localStorage.getItem('missions_level') || '0', 10);
-  }
+  // Read progress from localStorage (static web mode)
+  completed = JSON.parse(localStorage.getItem('missions_completed') || '[]');
+  remoteLevel = parseInt(localStorage.getItem('missions_level') || '0', 10);
   level = remoteLevel;
   missions.length = 0;
   missions.push(...jsons);
-  // Mark completed missions (skip in demo mode)
-  if (!isDemoMode) {
-    completed.forEach(idx => {
-      if (missions[idx]) missions[idx].completed = true;
-    });
-  }
+  // Mark completed missions
+  completed.forEach(idx => {
+    if (missions[idx]) missions[idx].completed = true;
+  });
   levelSpan.textContent = level;
   renderMissions();
 }
 
 function saveCompletedMissions() {
-  // Don't save progress in demo mode
-  if (isDemoMode) return;
   const completed = missions.map((m, i) => m.completed ? i : null).filter(i => i !== null);
   localStorage.setItem('missions_completed', JSON.stringify(completed));
   localStorage.setItem('missions_level', level);
+  // Sync with backend globally
+  // Currently only syncs with localStorage
 }
 
 
-let level = 0;
+let level = parseInt(localStorage.getItem('missions_level') || '0', 10);
 
 const missionsDiv = document.getElementById("missions");
 const levelSpan = document.getElementById("level");
+levelSpan.textContent = level;
 const popup = document.getElementById("popup");
 const popupTitle = document.getElementById("popupTitle");
 const popupDesc = document.getElementById("popupDesc");
@@ -72,7 +66,7 @@ function renderMissions() {
     btn.className = "mission" + (mission.completed ? " completed" : "");
     btn.textContent = mission.title;
     btn.onclick = () => openPopup(idx);
-    // Allow opening completed missions
+    // Ya no deshabilitamos el botón para permitir abrir misiones completas
     missionsDiv.appendChild(btn);
   });
 }
