@@ -56,6 +56,10 @@ async function loadMissions() {
       const { intro, missions: decodedMissions } = decodeMissions(encoded);
       missions.length = 0;
       missions.push(...decodedMissions);
+      // Also populate configMissions so the configurator shows the loaded missions
+      configMissions.length = 0;
+      configMissions.push(...decodedMissions.map(m => ({ title: m.title, desc: m.desc })));
+      renderConfigMissions();
       if (intro && intro.length > 0) {
         mainDescription = intro.join("\n");
         setIntro(intro);
@@ -261,9 +265,16 @@ function renderConfigMissions() {
     deleteBtn.textContent = "Delete";
     deleteBtn.onclick = () => {
       configMissions.splice(idx, 1);
+      // Recalculate level from completed status of remaining missions
+      level = missions.filter((m, i) => i < configMissions.length && m.completed).length;
+      // Also remove the corresponding mission from the main array
+      missions.splice(idx, 1);
+      // Adjust completed indices and fix level
+      level = missions.filter(m => m.completed).length;
+      levelSpan.textContent = level;
+      saveCompletedMissions();
+      renderMissions();
       renderConfigMissions();
-  syncMissions();
-      syncMissions();
     };
 
     item.appendChild(titleSpan);
@@ -275,8 +286,15 @@ function renderConfigMissions() {
 
 // Sync configMissions → main missions array and re-render
 function syncMissions() {
+  // Mark completed status on configMissions from current missions
+  const completedStatus = missions.map(m => m.completed);
   missions.length = 0;
-  configMissions.forEach(m => missions.push({ title: m.title, desc: m.desc }));
+  configMissions.forEach((m, i) => {
+    missions.push({ title: m.title, desc: m.desc, completed: completedStatus[i] || false });
+  });
+  // Recalculate level from completed missions
+  level = missions.filter(m => m.completed).length;
+  levelSpan.textContent = level;
   renderMissions();
 }
 
@@ -323,7 +341,6 @@ addMissionBtn.onclick = function() {
   configTitle.value = "";
   configDesc.value = "";
   renderConfigMissions();
-  syncMissions();
   syncMissions();
 };
 
