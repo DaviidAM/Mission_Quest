@@ -265,11 +265,7 @@ function renderConfigMissions() {
     deleteBtn.textContent = "Delete";
     deleteBtn.onclick = () => {
       configMissions.splice(idx, 1);
-      // Recalculate level from completed status of remaining missions
-      level = missions.filter((m, i) => i < configMissions.length && m.completed).length;
-      // Also remove the corresponding mission from the main array
       missions.splice(idx, 1);
-      // Adjust completed indices and fix level
       level = missions.filter(m => m.completed).length;
       levelSpan.textContent = level;
       saveCompletedMissions();
@@ -286,14 +282,12 @@ function renderConfigMissions() {
 
 // Sync configMissions → main missions array and re-render
 function syncMissions() {
-  // Mark completed status on configMissions from current missions
-  const completedStatus = missions.map(m => m.completed);
   missions.length = 0;
-  configMissions.forEach((m, i) => {
-    missions.push({ title: m.title, desc: m.desc, completed: completedStatus[i] || false });
+  configMissions.forEach((m) => {
+    missions.push({ title: m.title, desc: m.desc, completed: false });
   });
-  // Recalculate level from completed missions
-  level = missions.filter(m => m.completed).length;
+  // Reset level since user is actively editing — completed status from defaults does not carry over
+  level = 0;
   levelSpan.textContent = level;
   renderMissions();
 }
