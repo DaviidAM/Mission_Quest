@@ -1,5 +1,35 @@
 const missions = [];
 
+// ─── Default Guide Missions ─────────────────────────────────────────────────
+// These missions serve as a step-by-step guide for users to create their own
+// Mission Quest. They are shown by default when no missions/index.json exists.
+
+const GUIDE_DESCRIPTION = [
+  "Create your own Mission Quest in 3 simple steps:",
+  "1. Click the ⚙️ button to open the configurator",
+  "2. Write your own intro text and add your missions",
+  "3. Click 'Generate URL' to share your Quest!"
+];
+
+const GUIDE_MISSIONS = [
+  {
+    title: "⚙️ Open the Configurator",
+    desc: "Click the gear icon (⚙️) in the top-right corner of the screen to open the Mission Configurator panel."
+  },
+  {
+    title: "✏️ Create Your Intro",
+    desc: "In the configurator, edit the intro text at the top to describe your own quest or challenge."
+  },
+  {
+    title: "➕ Add Your Missions",
+    desc: "Click 'Add mission', enter a title and description for each task, then save. Repeat for all your missions."
+  },
+  {
+    title: "🔗 Generate & Share",
+    desc: "Click 'Generate URL' to create a shareable link containing all your missions. Share it with anyone!"
+  }
+];
+
 // Global error handler to catch silent failures (e.g. CDN load errors)
 window.onerror = function(msg, src, line, col, err) {
   console.error("[Global Error]", msg, "at", src, "line", line, "col", col);
@@ -49,7 +79,14 @@ async function loadMissions() {
     const res = await fetch('missions/index.json');
     files = await res.json();
   } catch (e) {
-    missionsDiv.innerHTML = '<p style="color:red">Failed to load mission list.</p>';
+    // No missions/index.json — use the guide missions as default
+    mainDescription = GUIDE_DESCRIPTION.join("\n");
+    setIntro(GUIDE_DESCRIPTION);
+    missions.length = 0;
+    missions.push(...GUIDE_MISSIONS.map(m => ({ ...m })));
+    level = 0;
+    levelSpan.textContent = level;
+    renderMissions();
     return;
   }
   let jsons = [];
