@@ -5,28 +5,24 @@ const missions = [];
 // Mission Quest. They are shown by default when no missions/index.json exists.
 
 const GUIDE_DESCRIPTION = [
-  "Create your own Mission Quest in 3 simple steps:",
-  "1. Click the ⚙️ button to open the configurator",
-  "2. Write your own intro text and add your missions",
-  "3. Click 'Generate URL' to share your Quest!"
+  "Create your own Mission Quest — it's easier than you think:",
+  "1. ⚙️ Open the configurator",
+  "2. ✏️ Edit the title and missions",
+  "3. 🔗 Press 'Generate URL' to share"
 ];
 
 const GUIDE_MISSIONS = [
   {
-    title: "⚙️ Open the Configurator",
-    desc: "Click the gear icon (⚙️) in the top-right corner of the screen to open the Mission Configurator panel."
+    title: "⚙️ Open the configurator",
+    desc: "Press the gear button (⚙️) in the top right corner to open the mission configurator panel."
   },
   {
-    title: "✏️ Create Your Intro",
-    desc: "In the configurator, edit the intro text at the top to describe your own quest or challenge."
+    title: "✏️ Edit the title and missions",
+    desc: "In the configurator, change the intro text and add or edit the missions for your own quest."
   },
   {
-    title: "➕ Add Your Missions",
-    desc: "Click 'Add mission', enter a title and description for each task, then save. Repeat for all your missions."
-  },
-  {
-    title: "🔗 Generate & Share",
-    desc: "Click 'Generate URL' to create a shareable link containing all your missions. Share it with anyone!"
+    title: "🔗 Press 'Generate URL' to share",
+    desc: "Press 'Generate URL' to create a shareable link containing all your missions. Share it with anyone!"
   }
 ];
 
