@@ -12,9 +12,11 @@
 
 💻 **Customizable**: Configure your own missions to suit your preferences and the preferences of your group.
 
+🧠 **AI-generated applications**: This web application was built as a proof of concept, testing the capabilities of AI-generated applications. It was generated in less than 30 min.
+
 💾 **Local progress tracking**: Your progress is automatically saved in your browser's cache, allowing multiple players to maintain independent progress if they are using different browsers.
 
-🧠 **AI-generated applications**: This web application was built as a proof of concept, testing the capabilities of AI-generated applications. It was generated in less than 30 min.
+⚙️ **Mission Configurator**: Create, edit, and share custom missions without editing code. Add missions visually through a modal panel, export your mission list as a URL to share with others, or load missions from a shared URL — no server required. Each mission has its own ⚙ icon for quick in-place editing.
 
 ## 📁 Screenshots
 
@@ -28,6 +30,36 @@
     <img src="./docs_assests/mission_done_website.JPG" alt="Mission Done" style="width: 300px;">
   </div>
 </div>
+
+<!-- TODO: screenshot of Mission Configurator modal -->
+![Mission Configurator](./docs_assets/mission_configurator.png)
+
+## ⚙️ Mission Configurator
+
+The **Mission Configurator** lets you create, edit, and share custom missions without editing any code or JSON files.
+
+### How to use
+
+1. **Open the configurator** — click the **⚙ Configurar misiones** button on the main screen.
+2. **Customize the intro** — the **Descripción principal (intro)** field at the top of the modal lets you edit the welcome text shown at the top of the page. Close the modal to save.
+3. **Add a mission** — fill in the title and description fields, then click **Añadir misión**. Repeat for as many missions as you want.
+4. **Edit a mission individually** — click the **⚙** icon next to any mission in the list to load it into the form and save changes.
+5. **Edit or delete from the list** — in the mission list inside the modal, click **Editar** to reload a mission into the form, or **Eliminar** to remove it.
+6. **Close the modal** — click the **×** button, press **Escape**, or click outside the modal panel.
+
+### Share missions via URL
+
+1. With your missions added in the configurator, click **Exportar a URL**.
+2. The browser's address bar updates to include a `?data=...` parameter containing your mission list **and the intro text** (compressed and encoded).
+3. Copy that URL and share it — anyone who opens it will have your missions and intro text pre-loaded.
+
+### Load missions from a shared URL
+
+Paste a URL with `?data=...` into the browser and open it. Mission Quest decodes the parameter and loads both the missions and the intro text automatically. This works entirely client-side — no server needed.
+
+### Demo mode
+
+Click **Demo** in the configurator to load three example missions (`Ir al gym`, `Sacar al perro`, `Leer`) instantly without entering them manually.
 
 ## 📁 Project structure
 

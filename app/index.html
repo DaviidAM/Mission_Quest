@@ -22,12 +22,42 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="title">Mission Quest</h1>
-    <p class="intro">Greetings, brave adventurer.</p>
-    <p class="intro">You are about to embark on a series of secret missions, designed to test your skills and determination.</p>
-    <p class="intro">Each challenge completed will unlock hidden rewards and increase your level in this enigmatic journey into the unknown. Are you ready to accept the challenge?</p>
+    <header class="app-header">
+      <h1 class="title">Mission Quest</h1>
+      <button id="configBtn" class="global-config-btn">⚙</button>
+    </header>
+    <div id="introContainer">
+      <p class="intro">Create your own Mission Quest — it's easier than you think:</p>
+      <p class="intro">1. ⚙️ Open the configurator</p>
+      <p class="intro">2. ✏️ Edit the title and missions</p>
+      <p class="intro">3. 🔗 Press 'Generate URL' to share</p>
+    </div>
     <p class="level">Current Level: <span id="level">0</span></p>
     <div id="missions"></div>
+    <div class="github-star-section">
+      <a href="https://github.com/DaviidAM/Mission_Quest" target="_blank" rel="noopener noreferrer" id="githubStarBtn" class="github-star-btn">
+        ⭐ Give it a star on GitHub
+      </a>
+    </div>
+  </div>
+
+  <div id="configModal" class="popup hidden">
+    <div class="popup-content config-content">
+      <span id="configClose" class="close">&times;</span>
+      <h2>Configure Missions</h2>
+      <textarea id="configIntro" placeholder="Main description (intro)" rows="2"></textarea>
+      <input id="configTitle" type="text" placeholder="Mission title">
+      <textarea id="configDesc" placeholder="Description"></textarea>
+      <button id="addMissionBtn">Add mission</button>
+      <div id="configMissionList"></div>
+      <button id="exportBtn">Generate URL</button>
+      <input id="exportedUrl" type="text" readonly placeholder="Generated URL will appear here" style="display:none; margin-top:8px; width:100%;">
+      <div id="exportUrlButtons" style="display:none; margin-top:4px;">
+        <button id="copyUrlBtn" class="small-btn">Copy URL</button>
+        <button id="openUrlBtn" class="small-btn">Open URL</button>
+      </div>
+      <button id="demoBtn">Demo</button>
+    </div>
   </div>
 
   <div id="popup" class="popup hidden">
@@ -39,6 +69,7 @@
       <button id="reactivateBtn" style="display:none;">Reactivate Mission</button>
     </div>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
