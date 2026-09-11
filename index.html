@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission Quest</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+  <style>
+    body, p, .level, .intro, #missions, .popup, .popup-content, button, span, h2, #popupDesc {
+      font-family: 'Bruno Ace SC', cursive;
+    }
+    .title {
+      font-family: 'Permanent Marker', cursive;
+    }
+    .intro, .level {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="app-header">
+      <h1 class="title">Mission Quest</h1>
+      <button id="configBtn" class="global-config-btn">⚙</button>
+    </header>
+    <div id="introContainer">
+      <p class="intro">Create your own Mission Quest — it's easier than you think:</p>
+      <p class="intro">1. ⚙️ Open the configurator</p>
+      <p class="intro">2. ✏️ Edit the title and missions</p>
+      <p class="intro">3. 🔗 Press 'Generate URL' to share</p>
+    </div>
+    <p class="level">Current Level: <span id="level">0</span></p>
+    <div id="missions"></div>
+    <div class="github-star-section">
+      <a href="https://github.com/DaviidAM/Mission_Quest" target="_blank" rel="noopener noreferrer" id="githubStarBtn" class="github-star-btn">
+        ⭐ Give it a star on GitHub
+      </a>
+    </div>
+  </div>
+
+  <div id="configModal" class="popup hidden">
+    <div class="popup-content config-content">
+      <span id="configClose" class="close">&times;</span>
+      <h2>Configure Missions</h2>
+      <textarea id="configIntro" placeholder="Main description (intro)" rows="2"></textarea>
+      <input id="configTitle" type="text" placeholder="Mission title">
+      <textarea id="configDesc" placeholder="Description"></textarea>
+      <button id="addMissionBtn">Add mission</button>
+      <div id="configMissionList"></div>
+      <button id="exportBtn">Generate URL</button>
+      <input id="exportedUrl" type="text" readonly placeholder="Generated URL will appear here" style="display:none; margin-top:8px; width:100%;">
+      <div id="exportUrlButtons" style="display:none; margin-top:4px;">
+        <button id="copyUrlBtn" class="small-btn">Copy URL</button>
+        <button id="openUrlBtn" class="small-btn">Open URL</button>
+      </div>
+      <button id="demoBtn">Demo</button>
+    </div>
+  </div>
+
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <span id="closePopup" class="close">&times;</span>
+      <h2 id="popupTitle"></h2>
+      <p id="popupDesc"></p>
+      <button id="completeBtn">Mission Complete!</button>
+      <button id="reactivateBtn" style="display:none;">Reactivate Mission</button>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
