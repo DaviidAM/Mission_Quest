@@ -14,3 +14,8 @@ Thumbs.db
 
 # Env
 .env
+
+# Backup files in app/
+app/*.bak
+app/app.js.tmp
+app.js.tmp
